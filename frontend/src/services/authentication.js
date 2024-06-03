@@ -1,4 +1,3 @@
-// docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const login = async (email, password) => {
@@ -17,9 +16,13 @@ export const login = async (email, password) => {
 
   const response = await fetch(`${BACKEND_URL}/tokens`, requestOptions);
 
-  // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
   if (response.status === 201) {
-    let data = await response.json();
+    const data = await response.json();
+    
+    // Store userId in localStorage
+    console.log("Received userId:", data.userId);
+    localStorage.setItem("userId", data.userId);
+   
     return data.token;
   } else {
     throw new Error(
@@ -41,11 +44,11 @@ export const signup = async (email, password) => {
     },
     body: JSON.stringify(payload),
   };
+console.log(BACKEND_URL)
+  const response = await fetch(`${BACKEND_URL}/users`, requestOptions);
 
-  let response = await fetch(`${BACKEND_URL}/users`, requestOptions);
-
-  // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
   if (response.status === 201) {
+    // No need to store userId for signup
     return;
   } else {
     throw new Error(

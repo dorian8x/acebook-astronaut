@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
 import { getPosts } from "../../services/posts";
 import Post from "../../components/Post/Post";
 import MakePost from "../../components/Post/MakePost";
+
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
@@ -11,25 +11,28 @@ export const FeedPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getPosts(token)
-        .then((data) => {
-          setPosts(data.posts);
-          localStorage.setItem("token", data.token);
-        })
-        .catch((err) => {
-          console.error(err);
+    const fetchPosts = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
           navigate("/login");
-        });
-    }
+          return;
+        }
+        
+        const postData = await getPosts(token);
+        setPosts(postData.posts);
+        localStorage.setItem("token", postData.token);
+      } catch (err) {
+        console.error(err);
+        navigate("/login");
+      }
+    };
+
+    fetchPosts();
   }, [navigate, flag]);
 
-  const token = localStorage.getItem("token");
-  if (!token) {
-    navigate("/login");
-    return;
-  }
+  const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
+  console.log("userId:", userId);
 
   return (
     <>
@@ -40,6 +43,7 @@ export const FeedPage = () => {
           <Post post={post} key={post._id} />
         ))}
       </div>
+  <Link to={`/profile/${userId}`}>View Profile</Link>
     </>
   );
 };

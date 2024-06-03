@@ -18,7 +18,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // API Routes
-app.use("/users", usersRouter);
+app.use("/users", usersRouter); 
+// this is saying that all the users will start with users 
 app.use("/posts", tokenChecker, postsRouter);
 app.use("/tokens", authenticationRouter);
 
