@@ -3,44 +3,45 @@ import { useNavigate, Link } from "react-router-dom";
 import { getPosts } from "../../services/posts";
 import Post from "../../components/Post/Post";
 import MakePost from "../../components/Post/MakePost";
+import LogoutButton from "../../components/LogoutButton";
 
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
-  const [flag, setFlag] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          navigate("/login");
-          return;
-        }
-        
-        const postData = await getPosts(token);
-        setPosts(postData.posts);
-        localStorage.setItem("token", postData.token);
-      } catch (err) {
-        console.error(err);
-        navigate("/login");
-      }
-    };
-
-    fetchPosts();
-  }, [navigate, flag]);
-
   const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
-  console.log("userId:", userId);
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getPosts(token)
+        .then((data) => {
+          setPosts(data.posts);
+          localStorage.setItem("token", data.token);
+        })
+        .catch((err) => {
+          console.error(err);
+          navigate("/login");
+        });
+    }
+  }, [navigate, refresh]);
+
+  // needs tests to account for edge case like getting here by typing in the URL without being logged in instead of navigating here through the website
+  const token = localStorage.getItem("token");
+  if (!token) {
+    navigate("/login");
+    return;
+  }
 
   return (
     <>
-      <MakePost value={flag} update={setFlag} />
+      <MakePost value={refresh} update={setRefresh} />
+      <LogoutButton />
       <h2>Posts</h2>
       <div className="feed" role="feed">
         {posts.map((post) => (
-          <Post post={post} key={post._id} />
+          <Post post={post} key={post._id} value={refresh} update={setRefresh} />
         ))}
       </div>
   <Link to={`/profile/${userId}`}>View Profile</Link>

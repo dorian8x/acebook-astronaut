@@ -1,3 +1,4 @@
+// docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const login = async (email, password) => {
@@ -16,14 +17,11 @@ export const login = async (email, password) => {
 
   const response = await fetch(`${BACKEND_URL}/tokens`, requestOptions);
 
+  // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
   if (response.status === 201) {
-    const data = await response.json();
-    
-    // Store userId in localStorage
-    console.log("Received userId:", data.userId);
-    localStorage.setItem("userId", data.userId);
-   
-    return data.token;
+    let data = await response.json();
+    console.log("Returned response:", data);
+    return data;
   } else {
     throw new Error(
       `Received status ${response.status} when logging in. Expected 201`
