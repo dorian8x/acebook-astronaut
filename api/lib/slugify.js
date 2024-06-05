@@ -13,3 +13,4 @@ const slugify = (text) => {
 };
     
 module.exports = slugify;
+    
