@@ -4,12 +4,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #515B3A;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: #353D2F;
 }
 
 body {
@@ -17,9 +17,33 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #E6FAFC;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+button, .button {
+  background-color: #6BA368; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 10px 32px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the container inline-block */
+  font-size: 12px; /* Increase font size */
+  margin: 4px 2px; /* Add some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 12px; /* Rounded corners */
+  transition-duration: 0.4s; /* Smooth transition */
+}
+
+button:hover, .button:hover {
+  background-color: #515B3A; /* White background */
+}
+
+div {
+  padding: 3px;
 }

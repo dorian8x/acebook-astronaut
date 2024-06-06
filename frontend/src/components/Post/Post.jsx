@@ -15,14 +15,22 @@ const Post = (props) => {
       .then((data) => {setAuthor(data.user.fullName)} );
   }, []);
 
+  const divStyle = {
+    textAlign: 'left',
+    backgroundColor: 'white',
+    padding: '10px'
+  }
+
   return (
-    <article>
-      {console.log("props is:", props)}
-      {props.post.message}    Likes: {props.post.like_array.length} Posted by: {author}
-      <Like post={props.post} value={isLiked} update={setLiked}/>
-      <CommentButton parent={props.post._id} /*value={props.value} update={props.update}*/ />
-      <ShowComments parent={props.post._id} /*value={props.value} update={props.update}*/ />
-    </article>
+    <div style={divStyle}>
+      <article>
+        {console.log("props is:", props)}
+        {props.post.message}    Likes: {props.post.like_array.length} Posted by: {author}
+        <Like post={props.post} value={isLiked} update={setLiked}/>
+        <CommentButton parent={props.post._id} /*value={props.value} update={props.update}*/ />
+        <ShowComments parent={props.post._id} /*value={props.value} update={props.update}*/ />
+      </article>
+    </div>
   );
 };
 
