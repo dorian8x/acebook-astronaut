@@ -1,4 +1,3 @@
-import ShowComments from "../Comment/ShowComments";
 import CommentButton from "../Comment/CommentButton";
 import Like from "./Like";
 import { useState, useEffect } from "react";
@@ -9,6 +8,7 @@ const Post = (props) => {
   const [author, setAuthor] = useState("");
   const [isLiked, setLiked] = useState(props.post.like_array.includes(user_id));
   const [likesCount, setLikesCount] = useState(props.post.like_array.length);
+  const [comments, setComments] = useState(props.comments)
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -25,8 +25,16 @@ const Post = (props) => {
         likesCount={likesCount}
         setLikesCount={setLikesCount}
       />
-      <CommentButton parent={props.post._id} />
-      <ShowComments parent={props.post._id} />
+      <CommentButton parent={props.post._id} comments={comments} setComments={setComments} />
+      <div className="feed" role="feed">
+        {comments.map((post) => (
+          <Post
+            post={post}
+            key={post._id}
+            comments={comments.filter((item) => item.parent == post._id)}
+          />
+        ))}
+      </div>
     </article>
   );
 };

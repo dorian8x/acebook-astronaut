@@ -51,7 +51,11 @@ export const FeedPage = () => {
       <h2>Posts</h2>
       <div className="feed" role="feed">
         {parentPosts.map((post) => (
-          <Post post={post} key={post._id} /*value={refresh} update={setRefresh}*/ />
+          <Post
+            post={post}
+            key={post._id}
+            comments={posts.filter((item) => item.parent == post._id)}
+          />
         ))}
       </div>
     </>
