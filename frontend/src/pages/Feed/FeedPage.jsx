@@ -5,6 +5,7 @@ import Post from "../../components/Post/Post";
 import MakePost from "../../components/Post/MakePost";
 import LogoutButton from "../../components/Navigation/LogoutButton";
 import { UserSearch } from "../../components/User/UserSearch";
+import {Navbar} from "../../components/Navigation/Navbar"
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
@@ -43,6 +44,7 @@ export const FeedPage = () => {
   
   return (
     <>
+      <Navbar/>
       <UserSearch />
       {/* <MakePost value={refresh} update={setRefresh} /> */}
       <MakePost value={posts} update={setPosts} />
