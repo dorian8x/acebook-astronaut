@@ -45,11 +45,11 @@ export const FeedPage = () => {
   return (
     <>
       <Navbar/>
-      <UserSearch />
+      {/* <UserSearch /> */}
       {/* <MakePost value={refresh} update={setRefresh} /> */}
       <MakePost value={posts} update={setPosts} />
-      <LogoutButton />
-      <Link to={`/profile/${user_id}`}>Your Profile</Link>
+      {/* <LogoutButton />
+      <Link to={`/profile/${user_id}`}>Your Profile</Link> */}
       <h2>Posts</h2>
       <div className="feed" role="feed">
         {parentPosts.map((post) => (
