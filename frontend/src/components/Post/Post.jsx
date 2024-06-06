@@ -8,7 +8,8 @@ const Post = (props) => {
   const user_id = localStorage.getItem("user_id");
   const [author, setAuthor] = useState("");
   const [isLiked, setLiked] = useState(props.post.like_array.includes(user_id));
-  
+  const [likesCount, setLikesCount] = useState(props.post.like_array.length);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     getUserById(token, props.post.author_id)
@@ -17,11 +18,15 @@ const Post = (props) => {
 
   return (
     <article>
-      {console.log("props is:", props)}
-      {props.post.message}    Likes: {props.post.like_array.length} Posted by: {author}
-      <Like post={props.post} value={isLiked} update={setLiked}/>
-      <CommentButton parent={props.post._id} /*value={props.value} update={props.update}*/ />
-      <ShowComments parent={props.post._id} /*value={props.value} update={props.update}*/ />
+      {props.post.message}    Likes: {likesCount} Posted by: {author}
+      <Like post={props.post}
+        isLiked={isLiked}
+        setLiked={setLiked}
+        likesCount={likesCount}
+        setLikesCount={setLikesCount}
+      />
+      <CommentButton parent={props.post._id} />
+      <ShowComments parent={props.post._id} />
     </article>
   );
 };
