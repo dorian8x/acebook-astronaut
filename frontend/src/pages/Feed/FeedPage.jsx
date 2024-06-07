@@ -34,11 +34,18 @@ export const FeedPage = () => {
   }
   
   let parentPosts = posts.filter((item) => !item.parent)
-  
+
+  const feedStyle = {
+    backgroundColor: 'white',
+    minWidth: '800px',
+    padding: '40px'
+  }
+
   return (
     <>
       <Navbar/>
       {/* <UserSearch/> */}
+      <div style={feedStyle}>
       <MakePost value={posts} update={setPosts} />
       <div className="feed" role="feed">
         {parentPosts.map((post) => (
@@ -48,6 +55,7 @@ export const FeedPage = () => {
             comments={posts.filter((item) => item.parent == post._id)}
           />
         ))}
+      </div>
       </div>
     </>
   );

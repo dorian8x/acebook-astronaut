@@ -93,3 +93,8 @@ form input, textarea {
 .commentContainer {
   margin-top: -47px;
 }
+
+#comment {
+  margin-left: 45px;
+  font-size: 15px;
+}
