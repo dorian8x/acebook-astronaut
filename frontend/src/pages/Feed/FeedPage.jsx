@@ -50,7 +50,6 @@ export const FeedPage = () => {
       <MakePost value={posts} update={setPosts} />
       {/* <LogoutButton />
       <Link to={`/profile/${user_id}`}>Your Profile</Link> */}
-      <h2>Posts</h2>
       <div className="feed" role="feed">
         {parentPosts.map((post) => (
           <Post post={post} key={post._id} /*value={refresh} update={setRefresh}*/ />

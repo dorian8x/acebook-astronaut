@@ -18,7 +18,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #E6FAFC;
-  padding-top: 100px;
+  padding-top: 170px;
 }
 
 h1 {
@@ -67,7 +67,7 @@ form label {
   justify-self: end;
 }
 
-form input {
+form input, textarea {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;

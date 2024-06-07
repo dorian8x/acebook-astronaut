@@ -22,7 +22,7 @@ export const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <div className="navbar-logo">
-                    <Link to="/">Acebook</Link>
+                    <Link to="/posts">Acebook</Link>
                 </div>
                 <div className="navbar-search">
                     <UserSearch />
