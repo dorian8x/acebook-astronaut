@@ -12,7 +12,7 @@ const CommentButton = (props) => {
         <div id="comment-button">
             {!addComment && <button onClick={showCommentBox}>Add Comment</button>}
             {addComment && <button onClick={showCommentBox}>Return</button>}
-            {addComment && <MakePost parent={props.parent} value={props.value} update={props.update} />}
+            {addComment && <MakePost parent={props.parent} value={props.comments} update={props.setComments} />}
         </div>
     );
 };

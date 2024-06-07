@@ -9,10 +9,6 @@ import {Navbar} from "../../components/Navigation/Navbar"
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
-  // Remove in future. Find a better way of rerendering componants and not rerendeing the whole feed page
-  // Possibly start investingating at Like.jsx??
-  // Changes necessary to MakePost.jsx
-  // const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
   const user_id = localStorage.getItem("user_id");
 
@@ -29,7 +25,7 @@ export const FeedPage = () => {
           navigate("/login");
         });
     }
-  }, [navigate/*, refresh*/]);
+  }, [navigate]);
 
   // needs tests to account for edge case
   // like getting here by typing in the URL without being logged in
@@ -44,15 +40,15 @@ export const FeedPage = () => {
   
   return (
     <>
-      <Navbar/>
-      {/* <UserSearch /> */}
-      {/* <MakePost value={refresh} update={setRefresh} /> */}
+      <UserSearch />
       <MakePost value={posts} update={setPosts} />
-      {/* <LogoutButton />
-      <Link to={`/profile/${user_id}`}>Your Profile</Link> */}
       <div className="feed" role="feed">
         {parentPosts.map((post) => (
-          <Post post={post} key={post._id} /*value={refresh} update={setRefresh}*/ />
+          <Post
+            post={post}
+            key={post._id}
+            comments={posts.filter((item) => item.parent == post._id)}
+          />
         ))}
       </div>
     </>
