@@ -26,9 +26,9 @@ const Post = (props) => {
   }
 
   return (
-    <article>
+    <article style = {divStyle}>
       <span className = "post">
-          <span className  = "author">{author}  </span>
+          <span className  = "author">{author} </span>
           {props.post.message}
         </span>
         <p>Likes: {likesCount}</p>

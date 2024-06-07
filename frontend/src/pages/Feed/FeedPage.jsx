@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getPosts } from "../../services/posts";
 import Post from "../../components/Post/Post";
 import MakePost from "../../components/Post/MakePost";
-import LogoutButton from "../../components/Navigation/LogoutButton";
-import { UserSearch } from "../../components/User/UserSearch";
 import {Navbar} from "../../components/Navigation/Navbar"
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
-  const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
