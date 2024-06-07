@@ -1,4 +1,4 @@
-:root {
+:root, :placeholder-shown {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -27,22 +27,22 @@ h1 {
 }
 
 button, .button {
-  background-color: #747C92; /* Green background */
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  padding: 10px 32px; /* Some padding */
-  text-align: center; /* Centered text */
-  text-decoration: none; /* Remove underline */
-  display: inline-block; /* Make the container inline-block */
-  font-size: 12px; /* Increase font size */
-  margin: 4px 2px; /* Add some margin */
-  cursor: pointer; /* Pointer/hand icon */
-  border-radius: 12px; /* Rounded corners */
-  transition-duration: 0.4s; /* Smooth transition */
+  background-color: #747C92;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 0.4s;
 }
 
 button:hover, .button:hover {
-  background-color: #3A2449; /* White background */
+  background-color: #3A2449;
 }
 
 div {
