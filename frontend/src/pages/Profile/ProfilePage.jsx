@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getUserById } from "../../services/users";
 import { ProfileUpdate } from "../../components/Profile/ProfileUpdate";
 
+import {Navbar} from "../../components/Navigation/Navbar"
+
 export const ProfilePage = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
@@ -32,6 +34,7 @@ export const ProfilePage = () => {
 
     return (
         <>
+            <Navbar/>
             <h1>{user.fullName}</h1>
             <p>Email: {user.email}</p>
             <p>Bio: {user.bio}</p>
