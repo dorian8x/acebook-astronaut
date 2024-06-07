@@ -25,7 +25,11 @@ const Post = (props) => {
     <div style={divStyle}>
       <article>
         {console.log("props is:", props)}
-        {props.post.message}    Likes: {props.post.like_array.length} Posted by: {author}
+        <span className = "post">
+          <span className  = "author">{author}  </span>
+          {props.post.message}
+        </span>
+        <p>Likes: {props.post.like_array.length}</p>
         <Like post={props.post} value={isLiked} update={setLiked}/>
         <CommentButton parent={props.post._id} /*value={props.value} update={props.update}*/ />
         <ShowComments parent={props.post._id} /*value={props.value} update={props.update}*/ />
