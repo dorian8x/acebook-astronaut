@@ -13,7 +13,10 @@ const Post = (props) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     getUserById(token, props.post.author_id)
-      .then((data) => {setAuthor(data.user.fullName)} );
+      .then((data) => {
+        setAuthor(data.user.fullName);
+        setComments(comments.reverse());
+      } );
   }, []);
 
   return (
@@ -25,7 +28,7 @@ const Post = (props) => {
         likesCount={likesCount}
         setLikesCount={setLikesCount}
       />
-      <CommentButton parent={props.post._id} comments={comments} setComments={setComments} />
+      {!props.post.parent && <CommentButton parent={props.post._id} comments={comments} setComments={setComments} />}
       <div className="feed" role="feed">
         {comments.map((post) => (
           <Post
