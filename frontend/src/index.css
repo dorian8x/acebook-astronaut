@@ -1,15 +1,15 @@
-:root {
+:root, :placeholder-shown {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #515B3A;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: #353D2F;
 }
 
 body {
@@ -17,9 +17,84 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #E6FAFC;
+  padding-top: 170px;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+button, .button {
+  background-color: #747C92;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+}
+
+button:hover, .button:hover {
+  background-color: #3A2449;
+}
+
+div {
+  padding: 10px 3px;
+}
+
+.passwordValidator {
+  color: gray;
+  font-size: 12px;
+  margin-bottom: -3px;
+}
+
+form {
+  grid-template-columns: max-content 1fr;
+  gap: 10px 20px;
+  align-items: center;
+  max-width: 400px;
+  margin: auto;
+}
+
+form label {
+  justify-self: end;
+}
+
+form input, textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.icon {
+  max-width: 25px;
+}
+
+.likesContainer {
+  display: grid;
+  grid-template-columns:auto auto;
+  text-align: left;
+  max-width: 50px;
+  place-items: center;
+  margin-left: 40px;
+}
+
+.commentContainer {
+  margin-top: -47px;
+}
+
+#comment {
+  margin-left: 45px;
+  font-size: 15px;
 }

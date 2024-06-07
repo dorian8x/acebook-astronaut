@@ -8,7 +8,7 @@ const Post = (props) => {
   const [author, setAuthor] = useState("");
   const [isLiked, setLiked] = useState(props.post.like_array.includes(user_id));
   const [likesCount, setLikesCount] = useState(props.post.like_array.length);
-  const [comments, setComments] = useState(props.comments)
+  const [comments, setComments] = useState(props.comments);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -19,17 +19,29 @@ const Post = (props) => {
       } );
   }, []);
 
+  const divStyle = {
+    textAlign: 'left',
+    backgroundColor: 'white',
+    padding: '10px',
+  }
+
   return (
-    <article>
-      {props.post.message}    Likes: {likesCount} Posted by: {author}
-      <Like post={props.post}
-        isLiked={isLiked}
-        setLiked={setLiked}
-        likesCount={likesCount}
-        setLikesCount={setLikesCount}
-      />
-      {!props.post.parent && <CommentButton parent={props.post._id} comments={comments} setComments={setComments} />}
-      <div className="feed" role="feed">
+    <article style = {divStyle}>
+      <span className = "post" id = {props.post.parent? 'comment': 'parentPost'}>
+          <span className  = "author">{author} </span>
+          {props.post.message}
+        </span>
+        
+        <span className = "likesContainer">
+          <Like post={props.post}
+          isLiked={isLiked}
+          setLiked={setLiked}
+          likesCount={likesCount}
+          setLikesCount={setLikesCount}/>
+          {likesCount}</span>
+          {!props.post.parent && <CommentButton parent={props.post._id} comments={comments} setComments={setComments} />}
+          
+        <div className="feed" role="feed">
         {comments.map((post) => (
           <Post
             post={post}
@@ -38,6 +50,7 @@ const Post = (props) => {
           />
         ))}
       </div>
+
     </article>
   );
 };

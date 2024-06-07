@@ -1,3 +1,4 @@
+
 // docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -21,30 +22,76 @@ export const getUserById = async (token, user_id) => {
 };
 
 
-export const updateUserProfile = async (token, email, fullName, bio, user_id) => {
-    const payload = {
-        email: email,
-        fullName: fullName,
-        bio: bio
-    };
+export const updateUserEmail = async (token, email, user_id) => {
+  const payload = {
+      email: email
+  };
 
-    const requestOptions = {
-        method: 'PUT',
-        headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-    };
+  const requestOptions = {
+      method: 'PUT',
+      headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+  };
 
-    const response = await fetch(`${BACKEND_URL}/users/${user_id}`, requestOptions);
+  const response = await fetch(`${BACKEND_URL}/users/${user_id}`, requestOptions);
 
-    if (response.status === 200) {
-        const data = await response.json();
-        return data.updatedUser;
-    } else {
-        throw new Error("Unable to update user profile");
-    }
+  if (response.status === 200) {
+      const data = await response.json();
+      return data.updatedUser;
+  } else {
+      throw new Error("Unable to update user profile");
+  }
+};
+
+export const updateUserFullName = async (token, fullName, user_id) => {
+  const payload = {
+      fullName: fullName
+  };
+
+  const requestOptions = {
+      method: 'PUT',
+      headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+  };
+
+  const response = await fetch(`${BACKEND_URL}/users/${user_id}`, requestOptions);
+
+  if (response.status === 200) {
+      const data = await response.json();
+      return data.updatedUser;
+  } else {
+      throw new Error("Unable to update user profile");
+  }
+};
+
+export const updateUserBio = async (token, bio, user_id) => {
+  const payload = {
+      bio: bio
+  };
+
+  const requestOptions = {
+      method: 'PUT',
+      headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+  };
+
+  const response = await fetch(`${BACKEND_URL}/users/${user_id}`, requestOptions);
+
+  if (response.status === 200) {
+      const data = await response.json();
+      return data.updatedUser;
+  } else {
+      throw new Error("Unable to update user profile");
+  }
 };
 
 

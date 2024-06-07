@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getPosts } from "../../services/posts";
 import Post from "../../components/Post/Post";
 import MakePost from "../../components/Post/MakePost";
-import LogoutButton from "../../components/Navigation/LogoutButton";
-import { UserSearch } from "../../components/User/UserSearch";
+import {Navbar} from "../../components/Navigation/Navbar"
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
-  const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -36,14 +34,19 @@ export const FeedPage = () => {
   }
   
   let parentPosts = posts.filter((item) => !item.parent)
-  
+
+  const feedStyle = {
+    backgroundColor: 'white',
+    minWidth: '800px',
+    padding: '40px'
+  }
+
   return (
     <>
-      <UserSearch />
+      <Navbar/>
+      {/* <UserSearch/> */}
+      <div style={feedStyle}>
       <MakePost value={posts} update={setPosts} />
-      <LogoutButton />
-      <Link to={`/profile/${user_id}`}>Your Profile</Link>
-      <h2>Posts</h2>
       <div className="feed" role="feed">
         {parentPosts.map((post) => (
           <Post
@@ -52,6 +55,7 @@ export const FeedPage = () => {
             comments={posts.filter((item) => item.parent == post._id)}
           />
         ))}
+      </div>
       </div>
     </>
   );

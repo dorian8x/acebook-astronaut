@@ -45,8 +45,9 @@ export const LoginPage = () => {
 
   return (
     <>
-      <h2>Login</h2>
+      <h2>Log in to your account</h2>
       <form onSubmit={handleSubmit}>
+        <div>
         <label htmlFor="email">Email:</label>
         <input
           placeholder="Email"
@@ -55,6 +56,8 @@ export const LoginPage = () => {
           value={email}
           onChange={handleEmailChange}
         />
+        </div>
+        <div>
         <label htmlFor="password">Password:</label>
         <input
           placeholder="Password"
@@ -63,7 +66,10 @@ export const LoginPage = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
+        </div>
+        <div>
+        <input role="submit-button" id="submit" type="submit" value="Submit" className = "button"/>
+        </div>
       </form>
     </>
   );

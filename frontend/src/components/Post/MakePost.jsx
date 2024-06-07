@@ -24,20 +24,26 @@ const MakePost = (props) => {
         setPostData(event.target.value);
     };
 
+    const divStyle = {
+        textAlign: 'left',
+        backgroundColor: 'white',
+        padding: '10px'
+        }
+
     return (
         <>
-        <div id="make-post">
+        <div id="make-post" style={divStyle}>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="new-post">
-                Write a post!
-                </label>
+                <div>
                 <textarea
                 id="new-post"
+                placeholder="Write a post!"
                 type="text"
                 value={postData}
                 onChange={handlePostChange}
                 />
-                <input role="submit-button" id="submit" type="submit" value="Post" />
+                </div>
+                <input role="submit-button" id="submit" type="submit" value="Post" className = "button"/>
             </form>
         </div>
         </>
