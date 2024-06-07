@@ -40,7 +40,8 @@ export const FeedPage = () => {
   
   return (
     <>
-      <UserSearch />
+      <Navbar/>
+      {/* <UserSearch/> */}
       <MakePost value={posts} update={setPosts} />
       <div className="feed" role="feed">
         {parentPosts.map((post) => (
