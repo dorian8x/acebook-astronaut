@@ -46,5 +46,29 @@ button:hover, .button:hover {
 }
 
 div {
-  padding: 3px;
+  padding: 10px 3px;
+}
+
+.passwordValidator {
+  color: gray;
+  font-size: 12px;
+  margin-bottom: -3px;
+}
+
+form {
+  grid-template-columns: max-content 1fr;
+  gap: 10px 20px;
+  align-items: center;
+  max-width: 400px;
+  margin: auto;
+}
+
+form label {
+  justify-self: end;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 }

@@ -74,12 +74,12 @@ export const SignupPage = () => {
             value={password}
             onChange={handlePasswordChange}
           />
-          <p>Must be 8+ characters</p>
-          <p>Must contain upper and lowercase</p>
-          <p>Must contain at least one number</p>
+          <p className = "passwordValidator">Must be 8+ characters</p>
+          <p className = "passwordValidator">Must contain upper and lowercase</p>
+          <p className = "passwordValidator">Must contain at least one number</p>
         </div>
         <div id="submit">
-          <input role="submit-button" id="submit" type="submit" value="Submit" />
+          <input role="submit-button" id="submit" type="submit" value="Submit" className = "button"/>
           </div>
       </form>
     </>
