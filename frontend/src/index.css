@@ -76,3 +76,20 @@ form input, textarea {
 .author {
   font-weight: bold;
 }
+
+.icon {
+  max-width: 25px;
+}
+
+.likesContainer {
+  display: grid;
+  grid-template-columns:auto auto;
+  text-align: left;
+  max-width: 50px;
+  place-items: center;
+  margin-left: 40px;
+}
+
+.commentContainer {
+  margin-top: -47px;
+}

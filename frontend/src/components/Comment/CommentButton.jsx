@@ -1,6 +1,8 @@
 import MakePost from "../Post/MakePost";
 import { useState } from "react";
 
+import commentImage from "../../assets/comment.png"
+
 const CommentButton = (props) => {
     const [addComment, setAddComment] = useState(false);
 
@@ -9,9 +11,9 @@ const CommentButton = (props) => {
     };
 
     return (
-        <div id="comment-button">
-            {!addComment && <button onClick={showCommentBox}>Add Comment</button>}
-            {addComment && <button onClick={showCommentBox}>Return</button>}
+        <div id="comment-button" className="commentContainer">
+            {!addComment && <img className = "icon" src={commentImage} onClick={showCommentBox}/>}
+            {addComment && <img className = "icon" src={commentImage} onClick={showCommentBox}/>}
             {addComment && <MakePost parent={props.parent} value={props.comments} update={props.setComments} />}
         </div>
     );

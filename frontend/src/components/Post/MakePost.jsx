@@ -35,13 +35,9 @@ const MakePost = (props) => {
         <div id="make-post" style={divStyle}>
             <form onSubmit={handleSubmit}>
                 <div>
-                <label htmlFor="new-post">
-                Write a post!
-                </label>
-                </div>
-                <div>
                 <textarea
                 id="new-post"
+                placeholder="Write a post!"
                 type="text"
                 value={postData}
                 onChange={handlePostChange}

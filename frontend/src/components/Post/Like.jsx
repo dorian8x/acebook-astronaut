@@ -1,4 +1,6 @@
 import { changeLike } from "../../services/posts";
+import likedImage from "../../assets/filledheart.png";
+import unlikedImage from "../../assets/heart.png"
 
 const Like = (props) => {
   const token = localStorage.getItem("token");
@@ -20,8 +22,8 @@ const Like = (props) => {
 
   return (
     <div>
-      {!props.isLiked && <button onClick={likePost}>Like</button>}
-      {props.isLiked && <button onClick={likePost}>Unlike</button>}
+      {!props.isLiked && <img className = "icon" src = {unlikedImage} onClick={likePost}/>}
+      {props.isLiked && <img className = "icon" src = {likedImage} onClick={likePost}/>}
     </div>
   );
 };

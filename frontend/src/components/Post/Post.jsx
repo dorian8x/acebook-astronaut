@@ -31,14 +31,16 @@ const Post = (props) => {
           <span className  = "author">{author} </span>
           {props.post.message}
         </span>
-        <p>Likes: {likesCount}</p>
-        <Like post={props.post}
-        isLiked={isLiked}
-        setLiked={setLiked}
-        likesCount={likesCount}
-        setLikesCount={setLikesCount}
-      />
-        {!props.post.parent && <CommentButton parent={props.post._id} comments={comments} setComments={setComments} />}
+        
+        <span className = "likesContainer">
+          <Like post={props.post}
+          isLiked={isLiked}
+          setLiked={setLiked}
+          likesCount={likesCount}
+          setLikesCount={setLikesCount}/>
+          {likesCount}</span>
+          {!props.post.parent && <CommentButton parent={props.post._id} comments={comments} setComments={setComments} />}
+        
         <div className="feed" role="feed">
         {comments.map((post) => (
           <Post
